@@ -1,24 +1,29 @@
 import { gql } from "@apollo/client";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import Head from "next/head";
 
 export default function Pokemon({ pokemon }) {
-  console.log("pokemon: ", pokemon);
   return (
     <div>
-      <div>
-        <strong>No. {pokemon.number}</strong>
-      </div>
-      <h1>{pokemon.name}</h1>
-      <img src={pokemon.image} />
-      <div>
-        <strong>Classification: {pokemon.classification}</strong>
-      </div>
-      <div>
-        <strong>Types: {pokemon.types}</strong>
-      </div>
-      <div>
-        <strong>Weaknesses: {pokemon.weaknesses}</strong>
-      </div>
+      <Head>
+        <title>{pokemon.name}</title>
+      </Head>
+      <main>
+        <p>
+          <strong>No. {pokemon.number}</strong>
+        </p>
+        <h1>{pokemon.name}</h1>
+        <img src={pokemon.image} />
+        <p>
+          <strong>Classification: {pokemon.classification}</strong>
+        </p>
+        <p>
+          <strong>Types: {pokemon.types}</strong>
+        </p>
+        <p>
+          <strong>Weaknesses: {pokemon.weaknesses}</strong>
+        </p>
+      </main>
     </div>
   );
 }
@@ -28,7 +33,6 @@ export async function getServerSideProps({ params }) {
     uri: "https://graphql-pokemon2.vercel.app",
     cache: new InMemoryCache(),
   });
-  console.log("PokemonName: ", params.slug);
   let slug = params.slug;
   const { data } = await client.query({
     query: gql`

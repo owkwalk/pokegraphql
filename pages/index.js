@@ -10,9 +10,19 @@ export default function Home({ pokemons }) {
       </Head>
 
       <main>
-        <div>
-          <h1>ポケモン一覧</h1>
-        </div>
+        {pokemons.map((pokemon) => {
+          return (
+            <a key={pokemon.id} href={`pokemon/${pokemon.name}`}>
+              <p>
+                <strong>{pokemon.number}</strong>
+              </p>
+              <p>
+                <strong>{pokemon.name}</strong>
+              </p>
+              <img src={pokemon.image} />
+            </a>
+          );
+        })}
       </main>
     </div>
   );
@@ -25,21 +35,19 @@ export async function getServerSideProps() {
   });
   const { data } = await client.query({
     query: gql`
-      query GetPokemon {
-        pokemon(name: "pikachu") {
+      query pokemons {
+        pokemons(first: 10) {
+          id
           number
           name
           image
-          classification
-          types
-          weaknesses
         }
       }
     `,
   });
   return {
     props: {
-      pokemons: [],
+      pokemons: data.pokemons,
     },
   };
 }
