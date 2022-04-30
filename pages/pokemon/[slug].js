@@ -11,7 +11,7 @@ export default function Pokemon({ pokemon }) {
       <h1>{pokemon.name}</h1>
       <img src={pokemon.image} />
       <div>
-        <strong>classification: {pokemon.classification}</strong>
+        <strong>Classification: {pokemon.classification}</strong>
       </div>
       <div>
         <strong>Types: {pokemon.types}</strong>
@@ -28,7 +28,7 @@ export async function getServerSideProps({ params }) {
     uri: "https://graphql-pokemon2.vercel.app",
     cache: new InMemoryCache(),
   });
-  console.log(params.slug);
+  console.log("PokemonName: ", params.slug);
   let slug = params.slug;
   const { data } = await client.query({
     query: gql`
