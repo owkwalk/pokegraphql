@@ -1,28 +1,53 @@
 import { gql } from "@apollo/client";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import Head from "next/head";
+import NextHead from "next/head";
+import NextLink from "next/link";
+import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 
 export default function Pokemon({ pokemon }) {
   return (
     <div>
-      <Head>
+      <NextHead>
         <title>{pokemon.name}</title>
-      </Head>
+      </NextHead>
       <main>
-        <p>
-          <strong>No. {pokemon.number}</strong>
-        </p>
-        <h1>{pokemon.name}</h1>
-        <img src={pokemon.image} />
-        <p>
-          <strong>Classification: {pokemon.classification}</strong>
-        </p>
-        <p>
-          <strong>Types: {pokemon.types}</strong>
-        </p>
-        <p>
-          <strong>Weaknesses: {pokemon.weaknesses}</strong>
-        </p>
+        <Flex height="100vh" alignItems="center" justifyContent="center">
+          <Flex direction="column">
+            <Box
+              borderWidth="1px"
+              rounded="lg"
+              flexBasis={["auto", "20%"]}
+              m="2"
+            >
+              <Heading size="lg" mt="5" mb="5" mx="5">
+                No.{pokemon.number}
+              </Heading>
+              <Image boxSize="500px" src={pokemon.image} />
+              <Heading size="lg" mt="5" mb="5" mx="5">
+                {pokemon.name}
+              </Heading>
+              <Flex direction="row">
+                <Box rounded="lg" width="200px" bg="orange" m="5">
+                  <Text fontSize="2xl" color="white" m="5">
+                    {pokemon.classification}
+                  </Text>
+                </Box>
+                <Box rounded="lg" width="200px" bg="royalblue" m="5">
+                  <Text fontSize="2xl" color="white" m="5">
+                    {pokemon.types}
+                  </Text>
+                </Box>
+              </Flex>
+            </Box>
+            <NextLink href="/">
+              <Button colorScheme="teal" mt="5" mb="5" mx="5">
+                <Text fontSize="lg" color="white" m="2">
+                  一覧へ戻る
+                </Text>
+              </Button>
+            </NextLink>
+          </Flex>
+        </Flex>
       </main>
     </div>
   );
