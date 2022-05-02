@@ -1,7 +1,7 @@
 import NextHead from "next/head";
 import { gql } from "@apollo/client";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { Box, Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Image, Text } from "@chakra-ui/react";
 
 export default function Home({ pokemons }) {
   return (
@@ -11,35 +11,37 @@ export default function Home({ pokemons }) {
       </NextHead>
 
       <main>
-        <Flex
-          flexWrap="wrap"
-          // alignItems="center"
-          justifyContent="center"
-        >
-          {pokemons.map((pokemon) => {
-            return (
-              <Box
-                as="a"
-                key={pokemon.id}
-                href={`pokemon/${pokemon.name}`}
-                borderWidth="1px"
-                rounded="lg"
-                flexBasis={["auto", "20%"]}
-                m="2"
-              >
-                <Flex direction="row">
-                  <Heading size="md" m="2">
-                    {pokemon.number}
-                  </Heading>
-                  <Image boxSize="50px" src={pokemon.image} m="2" />
-                  <Heading size="xl" m="2">
-                    {pokemon.name}
-                  </Heading>
-                </Flex>
-              </Box>
-            );
-          })}
-        </Flex>
+        <Container maxW="2000px" mt="50px">
+          <Flex
+            flexWrap="wrap"
+            // alignItems="center"
+            justifyContent="center"
+          >
+            {pokemons.map((pokemon) => {
+              return (
+                <Box
+                  as="a"
+                  key={pokemon.id}
+                  href={`pokemon/${pokemon.name}`}
+                  borderWidth="1px"
+                  rounded="md"
+                  flexBasis={["auto", "20%"]}
+                  m="3"
+                >
+                  <Flex direction="row" ml="5">
+                    <Text fontSize="xl" mt="5">
+                      {pokemon.number}
+                    </Text>
+                    <Image boxSize="50px" src={pokemon.image} m="2" />
+                    <Heading size="lg" mt="4">
+                      {pokemon.name}
+                    </Heading>
+                  </Flex>
+                </Box>
+              );
+            })}
+          </Flex>
+        </Container>
       </main>
     </div>
   );
