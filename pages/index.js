@@ -11,12 +11,8 @@ export default function Home({ pokemons }) {
       </NextHead>
 
       <main>
-        <Container maxW="2000px" mt="50px">
-          <Flex
-            flexWrap="wrap"
-            // alignItems="center"
-            justifyContent="center"
-          >
+        <Container maxW="1500px" mt="50px">
+          <Flex flexWrap="wrap" justifyContent="center">
             {pokemons.map((pokemon) => {
               return (
                 <Box
@@ -25,7 +21,7 @@ export default function Home({ pokemons }) {
                   href={`pokemon/${pokemon.name}`}
                   borderWidth="1px"
                   rounded="md"
-                  flexBasis={["auto", "20%"]}
+                  flexBasis={["full", "30%"]}
                   m="3"
                 >
                   <Flex direction="row" ml="5">
