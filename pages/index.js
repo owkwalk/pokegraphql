@@ -28,7 +28,7 @@ export default function Home({ pokemons }) {
                     <Text fontSize="xl" mt="5">
                       {pokemon.number}
                     </Text>
-                    <Image boxSize="50px" src={pokemon.image} m="2" />
+                    <Image boxSize="50px" src={pokemon.image} />
                     <Heading size="lg" mt="4">
                       {pokemon.name}
                     </Heading>

@@ -29,7 +29,7 @@ export default function Pokemon({ pokemon }) {
                 flexBasis={["auto", "20%"]}
                 m="2"
               >
-                <Text fontSize="25px" mt="5" mb="5" mx="5">
+                <Text fontSize="25px" mt="5" mb="5" mx="5" fontWeight="bold">
                   No.{pokemon.number}
                 </Text>
                 <Flex
@@ -37,7 +37,7 @@ export default function Pokemon({ pokemon }) {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Image boxSize="350px" src={pokemon.image} />
+                  <Image size="400px" src={pokemon.image} />
                 </Flex>
                 <Heading size="2xl" mx="5">
                   {pokemon.name}
