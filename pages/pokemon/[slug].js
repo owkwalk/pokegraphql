@@ -37,19 +37,19 @@ export default function Pokemon({ pokemon }) {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Image size="400px" src={pokemon.image} />
+                  <Image width="300px" objectFit="cover" src={pokemon.image} />
                 </Flex>
                 <Heading size="2xl" mx="5">
                   {pokemon.name}
                 </Heading>
                 <Flex direction="row" height="80px">
                   <Box rounded="lg" bg="#50C241" m="5">
-                    <Text fontSize="25px" ml="5" mr="5" mb="5">
+                    <Text fontSize="25px" ml="5" mr="5" mb="5" color="white">
                       {pokemon.classification}
                     </Text>
                   </Box>
                   <Box rounded="lg" bg="#813EA2" m="5">
-                    <Text fontSize="25px" ml="5" mr="5" mb="5">
+                    <Text fontSize="25px" ml="5" mr="5" mb="5" color="white">
                       {pokemon.types}
                     </Text>
                   </Box>
